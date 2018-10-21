@@ -22,6 +22,8 @@ class BinarySearchTree :
                 self.right.append(val)
     
     def __contains__(self, val):
+        if self.val is None:
+            return False
         if self.val == val:
             return True
         if self.val > val:
@@ -34,7 +36,8 @@ class BinarySearchTree :
 
     def __iter__(self):
         self.d = deque()
-        self.d.append(self)
+        if self.val is not None:
+          self.d.append(self)
         return self
     
     def __next__(self):
